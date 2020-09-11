@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.websocket.server.PathParam;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -17,12 +14,12 @@ public class TaskController {
     @Autowired
     private ITaskRepository repository;
 
-    @RequestMapping(value = "tasks", method = RequestMethod.GET)
+    @GetMapping("tasks")
     public List<Task> List() {
-        return this.repository.findAll();
+        return this.repository.findAllByOrderByIdAsc();
     }
 
-    @RequestMapping(value = "tasks", method = RequestMethod.POST)
+    @PostMapping("tasks")
     public Task Create(@RequestBody Task task) {
         return this.repository.save(task);
     }
@@ -42,7 +39,7 @@ public class TaskController {
         }
     }
 
-    @RequestMapping(value = "tasks/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("tasks/{id}")
     public ResponseEntity<Task> Delete(@PathVariable("id") Long id) {
         Optional<Task> fetchedTask = this.repository.findById(id);
         if (fetchedTask.isPresent()) {
