@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.acme</groupId>
-	<artifactId>todo-manager</artifactId>
+	<artifactId>acme-todo-manager-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>todo-manager</name>
+	<name>acme-todo-manager-api</name>
 	<description>Accenture - Desafio desenvolvedor Java Full-Stack</description>
 
 	<properties>
